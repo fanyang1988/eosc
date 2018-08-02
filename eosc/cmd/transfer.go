@@ -24,8 +24,11 @@ var transferCmd = &cobra.Command{
 		api := getAPI()
 
 		action := eosforce.NewTransfer(from, to, quantity, memo)
-		action.Account = toAccount(viper.GetString("transfer-cmd-contract"), "--contract")
+
+		// in eosforce the sys token is use `eosio.transfer` in System to transfer coin
 		action.Account = eos.AN("eosio")
+		// action.Account = toAccount(viper.GetString("transfer-cmd-contract"), "--contract")
+
 		pushEOSCActions(api, action)
 	},
 }

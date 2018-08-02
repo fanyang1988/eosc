@@ -49,8 +49,9 @@ func init() {
 	RootCmd.PersistentFlags().BoolP("skip-sign", "", false, "Do not sign the transaction. Use with --output-transaction.")
 	RootCmd.PersistentFlags().IntP("expiration", "", 30, "Set time before transaction expires, in seconds. Defaults to 30 seconds.")
 	RootCmd.PersistentFlags().BoolP("sudo-wrap", "", false, "Wrap the transaction in a eosio.sudo exec. Useful to BPs, with --output-transaction and --skip-sign to then submit as a multisig proposition.")
+	RootCmd.PersistentFlags().BoolP("debug", "d", false, "Open Debug Mode")
 
-	for _, flag := range []string{"vault-file", "api-url", "kms-gcp-keypath", "wallet-url", "permission", "expiration", "output-transaction", "skip-sign", "offline-head-block", "offline-chain-id", "offline-sign-key", "sudo-wrap"} {
+	for _, flag := range []string{"vault-file", "api-url", "kms-gcp-keypath", "wallet-url", "permission", "expiration", "output-transaction", "skip-sign", "offline-head-block", "offline-chain-id", "offline-sign-key", "sudo-wrap", "debug"} {
 		if err := viper.BindPFlag("global-"+flag, RootCmd.PersistentFlags().Lookup(flag)); err != nil {
 			panic(err)
 		}

@@ -68,7 +68,10 @@ func attachWallet(api *eos.API) {
 }
 
 func getAPI() *eos.API {
-	return eos.New(viper.GetString("global-api-url"))
+	isDebug := viper.GetBool("global-debug")
+	res := eos.New(viper.GetString("global-api-url"))
+	res.Debug = isDebug
+	return res
 }
 
 func errorCheck(prefix string, err error) {
@@ -163,29 +166,17 @@ func pushEOSCActions(api *eos.API, actions ...*eos.Action) {
 	}
 
 	outputTrx := viper.GetString("global-output-transaction")
-
 	if outputTrx != "" {
-		cnt, err := json.MarshalIndent(signedTx, "", "  ")
-		errorCheck("marshalling json", err)
-
-		err = ioutil.WriteFile(outputTrx, cnt, 0644)
-		errorCheck("writing output transaction", err)
-
-		for _, act := range signedTx.Actions {
-			act.SetToServer(false)
-		}
-
-		cnt, err = json.MarshalIndent(signedTx, "", "  ")
-		errorCheck("marshalling json", err)
-
-		fmt.Println(string(cnt))
-		fmt.Println("---")
-		fmt.Printf("Transaction written to %q\n", outputTrx)
-		fmt.Println("Above is a pretty-printed representation of the outputted file")
+		printTrx(signedTx, outputTrx)
 	} else {
 		if packedTx == nil {
 			fmt.Println("A signed transaction is required if you want to broadcast it. Remove --skip-sign (or add --output-transaction ?)")
 			os.Exit(1)
+		}
+
+		isDebug := viper.GetBool("global-debug")
+		if isDebug {
+			printTrx(signedTx, "")
 		}
 
 		// TODO: print the traces
@@ -196,6 +187,27 @@ func pushEOSCActions(api *eos.API, actions ...*eos.Action) {
 		fmt.Println("Transaction submitted to the network. Transaction ID: " + resp.TransactionID)
 
 	}
+}
+
+func printTrx(signedTx *eos.SignedTransaction, outputTrx string) {
+	cnt, err := json.MarshalIndent(signedTx, "", "  ")
+	errorCheck("marshalling json", err)
+
+	if outputTrx != "" {
+		err = ioutil.WriteFile(outputTrx, cnt, 0644)
+	}
+	errorCheck("writing output transaction", err)
+	for _, act := range signedTx.Actions {
+		act.SetToServer(false)
+	}
+	cnt, err = json.MarshalIndent(signedTx, "", "  ")
+	errorCheck("marshalling json", err)
+	fmt.Println(string(cnt))
+	fmt.Println("---")
+	if outputTrx != "" {
+		fmt.Printf("Transaction written to %q\n", outputTrx)
+	}
+	fmt.Println("Above is a pretty-printed representation of the outputted file")
 }
 
 func yamlUnmarshal(cnt []byte, v interface{}) error {
