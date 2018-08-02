@@ -15,6 +15,7 @@ import (
 	"github.com/fanyang1988/eos-go/ecc"
 	"github.com/fanyang1988/eos-go/sudo"
 	"github.com/fanyang1988/eosc/cli"
+	"github.com/fanyang1988/eosc/eosc/fee"
 	eosvault "github.com/fanyang1988/eosc/vault"
 	"github.com/spf13/viper"
 )
@@ -136,10 +137,8 @@ func pushEOSCActions(api *eos.API, actions ...*eos.Action) {
 
 	tx.SetExpiration(time.Duration(viper.GetInt("global-expiration")) * time.Second)
 
-	tx.Fee = eos.Asset{
-		Amount: 100,
-		Symbol: eos.EOSSymbol,
-	}
+	tx.Fee = fee.GetFeeByActions(actions)
+
 	var signedTx *eos.SignedTransaction
 	var packedTx *eos.PackedTransaction
 
