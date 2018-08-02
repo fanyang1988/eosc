@@ -7,8 +7,8 @@ import (
 	"os"
 
 	"github.com/fanyang1988/eos-go/ecc"
-	"github.com/eoscanada/eosc/cli"
-	eosvault "github.com/eoscanada/eosc/vault"
+	"github.com/fanyang1988/eosc/cli"
+	eosvault "github.com/fanyang1988/eosc/vault"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 )

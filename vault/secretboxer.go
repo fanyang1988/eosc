@@ -3,7 +3,7 @@ package vault
 import (
 	"fmt"
 
-	"github.com/eoscanada/eosc/cli"
+	"github.com/fanyang1988/eosc/cli"
 	"github.com/pkg/errors"
 )
 

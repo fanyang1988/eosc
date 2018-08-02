@@ -20,14 +20,14 @@ in this repository.
 Installation
 ------------
 
-1. Install from https://github.com/eoscanada/eosc/releases
+1. Install from https://github.com/fanyang1988/eosc/releases
 
 **or**
 
 2. Build from source with:
 
 ```bash
-go get -u -v github.com/eoscanada/eosc/eosc
+go get -u -v github.com/fanyang1988/eosc/eosc
 ```
 
 

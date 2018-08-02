@@ -7,7 +7,7 @@ import (
 	_ "github.com/fanyang1988/eos-go/system"
 	_ "github.com/fanyang1988/eos-go/token"
 
-	"github.com/eoscanada/eosc/eosc/cmd"
+	"github.com/fanyang1988/eosc/eosc/cmd"
 )
 
 var version = "dev"
