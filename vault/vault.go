@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"os"
 
-	eos "github.com/eoscanada/eos-go"
-	"github.com/eoscanada/eos-go/ecc"
+	eos "github.com/fanyang1988/eos-go"
+	"github.com/fanyang1988/eos-go/ecc"
 )
 
 // Vault represents an `eosc` wallet.  It contains the encrypted

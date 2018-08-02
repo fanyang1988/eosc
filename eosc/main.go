@@ -3,9 +3,9 @@ package main
 import (
 	// Load all contracts here, so we can always read and decode
 	// transactions with those contracts.
-	_ "github.com/eoscanada/eos-go/msig"
-	_ "github.com/eoscanada/eos-go/system"
-	_ "github.com/eoscanada/eos-go/token"
+	_ "github.com/fanyang1988/eos-go/msig"
+	_ "github.com/fanyang1988/eos-go/system"
+	_ "github.com/fanyang1988/eos-go/token"
 
 	"github.com/eoscanada/eosc/eosc/cmd"
 )

@@ -7,8 +7,8 @@ import (
 	"errors"
 	"io/ioutil"
 
-	eos "github.com/eoscanada/eos-go"
-	"github.com/eoscanada/eos-go/msig"
+	eos "github.com/fanyang1988/eos-go"
+	"github.com/fanyang1988/eos-go/msig"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 )

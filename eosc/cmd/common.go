@@ -11,9 +11,9 @@ import (
 	"time"
 
 	yaml2json "github.com/bronze1man/go-yaml2json"
-	"github.com/eoscanada/eos-go"
-	"github.com/eoscanada/eos-go/ecc"
-	"github.com/eoscanada/eos-go/sudo"
+	"github.com/fanyang1988/eos-go"
+	"github.com/fanyang1988/eos-go/ecc"
+	"github.com/fanyang1988/eos-go/sudo"
 	"github.com/eoscanada/eosc/cli"
 	eosvault "github.com/eoscanada/eosc/vault"
 	"github.com/spf13/viper"

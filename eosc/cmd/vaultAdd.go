@@ -5,7 +5,7 @@ package cmd
 import (
 	"fmt"
 
-	"github.com/eoscanada/eos-go/ecc"
+	"github.com/fanyang1988/eos-go/ecc"
 	"github.com/eoscanada/eosc/cli"
 	eosvault "github.com/eoscanada/eosc/vault"
 	"github.com/spf13/cobra"

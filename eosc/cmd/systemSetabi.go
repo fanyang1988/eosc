@@ -1,7 +1,7 @@
 package cmd
 
 import (
-	"github.com/eoscanada/eos-go/system"
+	"github.com/fanyang1988/eos-go/system"
 	"github.com/spf13/cobra"
 )
 

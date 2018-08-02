@@ -3,7 +3,7 @@
 package cmd
 
 import (
-	"github.com/eoscanada/eos-go/forum"
+	"github.com/fanyang1988/eos-go/forum"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 )

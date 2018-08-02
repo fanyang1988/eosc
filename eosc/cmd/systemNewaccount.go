@@ -6,9 +6,9 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/eoscanada/eos-go"
-	"github.com/eoscanada/eos-go/ecc"
-	"github.com/eoscanada/eos-go/system"
+	"github.com/fanyang1988/eos-go"
+	"github.com/fanyang1988/eos-go/ecc"
+	"github.com/fanyang1988/eos-go/system"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 )
