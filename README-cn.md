@@ -1,6 +1,9 @@
 `eosc` 命令行工具 (瑞士军刀)
 ----------------------------
 
+基于 https://github.com/eoscanada/eosc 开发
+主要为了适配 eosforce
+
 `eosc` 是一个跨平台的命令行工具 (支持 Windows, Mac 和 Linux)，你可以通过这个工具实现与 EOS.IO 区块链的交互。
 
 这个工具可以用来投票，同时也可以作为存储私钥的钱包来使用。

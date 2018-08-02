@@ -3,6 +3,10 @@
 
 [点击查看中文](./README-cn.md)
 
+fork from https://github.com/eoscanada/eosc
+change to use for eosforce
+
+
 `eosc` is a cross-platform (Windows, Mac and Linux) command-line tool
 for interacting with an EOS.IO blockchain.
 
