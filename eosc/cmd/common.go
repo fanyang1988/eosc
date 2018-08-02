@@ -136,6 +136,10 @@ func pushEOSCActions(api *eos.API, actions ...*eos.Action) {
 
 	tx.SetExpiration(time.Duration(viper.GetInt("global-expiration")) * time.Second)
 
+	tx.Fee = eos.Asset{
+		Amount: 100,
+		Symbol: eos.EOSSymbol,
+	}
 	var signedTx *eos.SignedTransaction
 	var packedTx *eos.PackedTransaction
 

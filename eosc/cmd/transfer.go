@@ -3,8 +3,8 @@
 package cmd
 
 import (
-	eos "github.com/fanyang1988/eos-go"
-	"github.com/fanyang1988/eos-go/token"
+	"github.com/fanyang1988/eos-go"
+	"github.com/fanyang1988/eos-go/eosforce"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 )
@@ -23,8 +23,9 @@ var transferCmd = &cobra.Command{
 
 		api := getAPI()
 
-		action := token.NewTransfer(from, to, quantity, memo)
+		action := eosforce.NewTransfer(from, to, quantity, memo)
 		action.Account = toAccount(viper.GetString("transfer-cmd-contract"), "--contract")
+		action.Account = eos.AN("eosio")
 		pushEOSCActions(api, action)
 	},
 }
