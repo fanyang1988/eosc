@@ -7,7 +7,9 @@ import (
 	_ "github.com/fanyang1988/eos-go/system"
 	_ "github.com/fanyang1988/eos-go/token"
 
-	"github.com/fanyang1988/eosc/eosc/cmd"
+	"github.com/fanyang1988/eosc/eosc/eosforce_cmd"
+	_ "github.com/fanyang1988/eosc/eosc/eosforce_cmd/get"
+	_ "github.com/fanyang1988/eosc/eosc/eosforce_cmd/vault"
 )
 
 var version = "dev"
