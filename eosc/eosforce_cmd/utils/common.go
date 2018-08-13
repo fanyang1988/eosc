@@ -16,6 +16,7 @@ import (
 	"github.com/spf13/viper"
 )
 
+// MustGetWallet get vault , if err exit
 func MustGetWallet() *eosvault.Vault {
 	vault, err := setupWallet()
 	ErrorCheck("wallet setup", err)
@@ -65,6 +66,7 @@ func GetAPI() *eos.API {
 	return res
 }
 
+// ErrorCheck if err is not nil, log then exit
 func ErrorCheck(prefix string, err error) {
 	if err != nil {
 		fmt.Printf("ERROR: %s: %s\n", prefix, err)
@@ -93,6 +95,7 @@ func loadYAMLOrJSONFile(filename string, v interface{}) error {
 	return yamlUnmarshal(cnt, v)
 }
 
+// ToAccount get account from cli params
 func ToAccount(in, field string) eos.AccountName {
 	acct, err := cli.ToAccountName(in)
 	if err != nil {
@@ -102,6 +105,7 @@ func ToAccount(in, field string) eos.AccountName {
 	return acct
 }
 
+// ToName get name from cli params
 func ToName(in, field string) eos.Name {
 	name, err := cli.ToName(in)
 	if err != nil {

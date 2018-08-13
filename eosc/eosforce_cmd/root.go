@@ -9,8 +9,10 @@ import (
 	"github.com/spf13/viper"
 )
 
+// Version eosc version
 var Version string
 
+// RootCmd root cmd for cobra.Command
 var RootCmd = &cobra.Command{
 	Use:   "eosc",
 	Short: "eosc is an EOS command-line swiss knife",
@@ -27,6 +29,7 @@ Source code is available at: https://github.com/fanyang1988/eosc
 `,
 }
 
+// Execute execute RootCmd if err exit process
 func Execute() {
 	if err := RootCmd.Execute(); err != nil {
 		fmt.Println(err)
