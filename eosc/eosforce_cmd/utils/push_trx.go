@@ -91,9 +91,11 @@ func PushEOSCActions(api *eos.API, actions ...*eos.Action) (*eos.PushTransaction
 			})
 		}
 
-		attachWallet(api)
+		err := attachWallet(api)
+		if err != nil {
+			return nil, err
+		}
 
-		var err error
 		signedTx, packedTx, err = api.SignTransaction(tx, opts.ChainID, eos.CompressionNone)
 		if err != nil {
 			return nil, errors.WithMessage(err, "signing trx err")

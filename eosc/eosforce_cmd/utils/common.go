@@ -45,22 +45,16 @@ func setupWallet() (*eosvault.Vault, error) {
 	return vault, nil
 }
 
-func attachWallet(api *eos.API) {
+func attachWallet(api *eos.API) error {
 	walletURLs := viper.GetStringSlice("global-wallet-url")
-	if len(walletURLs) == 0 {
-		vault, err := setupWallet()
-		ErrorCheck("setting up wallet", err)
 
-		api.SetSigner(vault.KeyBag)
-	} else {
-		if len(walletURLs) == 1 {
-			// If a `walletURLs` has a Username in the path, use instead of `default`.
-			api.SetSigner(eos.NewWalletSigner(eos.New(walletURLs[0]), "default"))
-		} else {
-			fmt.Println("Multi-signer not yet implemented.  Please choose only one `--wallet-url`")
-			os.Exit(1)
-		}
+	if len(walletURLs) != 1 {
+		return errors.New("err : Multi-signer not yet implemented or No wallet url")
 	}
+
+	// If a `walletURLs` has a Username in the path, use instead of `default`.
+	api.SetSigner(eos.NewWalletSigner(eos.New(walletURLs[0]), "default"))
+	return nil
 }
 
 // GetAPI create eos api
